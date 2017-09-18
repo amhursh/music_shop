@@ -21,8 +21,79 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="/">Music Store</a>
+            </button>
+            <a class="navbar-brand" href="/">Music Store</a>
+          </div>
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+              <li><a href="/items">Items</a></li>
+              <% if !current_user.nil? %>
+                <li><a href="/orders">Orders</a></li>
+              <% end %>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categories <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <% all_for_nav.each do |category| %>
+                  <li><%= link_to "#{category.title.capitalize}", category_path(category.title) %></li>
+                  <% end %>
+                </ul>
+              </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <% if !current_user.nil? && current_user.admin? %>
+              <li><%= link_to "Admin Dashboard", admin_dashboard_path %></li>
+              <% end %>
+              <li><a href="/cart">View Cart</a></li>
+              <% if current_user %>
+              <li><%= link_to "Logout", logout_path, method: :delete %></li>
+              <li><%= current_user.username %></li>
+              <% else %>
+              <li><a href="/login">Login</a></li>
+              <% end %>
+            </ul>
+            </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+          </nav>
+        </header>
+        <% flash.each do |type, message| %>
+        <%= sanitize(message) %>
+        <% end %>
+        <%= yield %>
+      </body>
+
+      <footer>
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6 col-sm-6 footerleft ">
+              <div class="logofooter"><%= image_tag("footer-music.svg", alt: "Edit Entry", height: "125px") %></div>
+              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley.</p>
+            </div>
+            <div class="col-md-6 col-sm-6 paddingtop-bottom footerright">
+              <h6 class="heading7">Categories</h6>
+              <ul class="footer-ul">
+                <li><a href="#">Dummy's until we erb it</a></li>
+                <li><a href="#">Guitars</a></li>
+                <li><a href="#">Keyboards</a></li>
+                <li><a href="#">Synths</a></li>
+                <li><a href="#">Drums</a></li>
+                <br>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </footer>
+      <!--footer start from here-->
+      <div class="copyright">
+        <div class="container">
+          <div class="col-md-6">
+            <p>© 2017 - Joel, Aaron, Randy, Sam</p>
+          </div>
+          <div class="col-md-6">
+            <ul class="bottom_ul">
+              <li><a href="https://github.com/amhursh/music_shop/">Source Code</a></li>
+            </ul>
+          </div>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">

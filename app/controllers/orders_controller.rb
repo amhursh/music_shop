@@ -6,14 +6,19 @@ class OrdersController < ApplicationController
 	end
 
 	def show
-		@order = Order.find(params[:id])
-		@items = @order.items.distinct
+		if Order.find(params[:id]).user_id == current_user.id
+			@order = Order.find(params[:id])
+			@items = @order.items.distinct
+		else
+			not_found
+		end
 	end
 
 	def create
 		order = Order.new(user_id: current_user.id)
 		order.add_items(@cart)
 		if order.save
+			session[:cart].clear
 			flash[:success] = "Order was successfully placed"
 			redirect_to orders_path
 		else
