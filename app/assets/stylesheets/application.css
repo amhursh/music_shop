@@ -101,6 +101,12 @@ body > div > div.metrics-wrapper > div {
   width: 100px;
   height: 100px;
 }
+.no-mar-flash-text {
+  padding: 5px;
+  margin: 0px;
+  color: darkgreen;
+}
+
 
 /* Footer Below */
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700,300);
@@ -142,5 +148,3 @@ footer { background-color:#0c1a1e; font-family: 'Open Sans', sans-serif; positio
  .bottom_ul li { float:left; line-height:40px;}
  .bottom_ul li:after { color:#FFF; margin-right:8px; margin-left:8px;}
  .bottom_ul li a { color:#FFF;  font-size:12px;}
-
-
