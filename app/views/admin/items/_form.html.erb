@@ -1,21 +1,36 @@
+<div class="row">
+<div class="col-md-4">
+
+</div>
+<div class="col-md-4">
+
 <%= form_for [:admin, @item], html: { multipart: true } do |f| %>
-  <%= f.label :title %>
-  <%= f.text_field :title %>
+  <p>Title</p>
+  <%= f.text_field :title, class: "form-item", placeholder: "ex: Really Rad Instrument" %><br>
 
-  <%= f.label :description %>
-  <%= f.text_area :description %>
+  <p>Item Description</p>
+  <%= f.text_area :description, class: "form-item", placeholder: "Enter a paragraph " %><br>
 
-  <p><%= f.label :price %>
-  $<%= f.number_field :price %></p>
+  <p>Price <small>ex. 0.00</small></p>
+  <%= f.number_field :price, class: "form-item" %><br>
 
-  <%= f.label :category %>
-  <%= f.select :category_id, Category.all.collect { |c| [ c.title, c.id ] }, include_blank: false %>
+  <p>Select Category</p>
+  <%= f.select :category_id, Category.all.collect { |c| [ c.title, c.id ] }, include_blank: false, class: "form-item" %><br>
+<br>
+  <p>Upload Image</p>
+  <%= f.file_field :image, class: "form-item" %><br>
 
-  <%= f.label :image %>
-  <%= f.file_field :image %>
-
-  <%= f.label :status %>
-  <%= f.select :status, ["active", "retired"] %>
+  <p>Status of Item</p>
+  <%= f.select :status, ["active", "retired"], class: "form-item" %><br>
+  <br>
 
   <%= f.submit "Submit" %>
-<% end %>
+<% end %><br><br>
+
+</div>
+<div class="col-md-4">
+
+</div>
+
+
+</div>
