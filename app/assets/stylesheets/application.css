@@ -110,6 +110,10 @@ body > div > div.metrics-wrapper > div {
 .form-item {
   width: 100%;
 }
+.form-label {
+  font-weight: bold;
+  margin-top: 5px;
+}
 
 /* Footer Below */
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700,300);
