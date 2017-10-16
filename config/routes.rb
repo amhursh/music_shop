@@ -23,4 +23,5 @@ Rails.application.routes.draw do
 
   resources :categories, path: '/', only: [:show]
 
+  resources :settings, except: [:show, :new, :edit]
 end
