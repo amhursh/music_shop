@@ -31,6 +31,7 @@ class AudiosController < ApplicationController
   # GET /audios.json
   def index
     @audios = Audio.all
+    @repositories = Settings.repositories ||= []
   end
 
   # GET /audios/1
