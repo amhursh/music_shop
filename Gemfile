@@ -34,6 +34,8 @@ gem 'chartkick'
 gem 'paperclip'
 gem 'foundation-rails'
 gem 'foundation-icons-sass-rails'
+gem 'rails-settings-cached', '~> 0.4.0'
+
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
