@@ -1,6 +1,25 @@
 class AudiosController < ApplicationController
   before_action :set_audio, only: [:show, :edit, :update, :destroy]
 
+  # GET /sync_repo/:id
+  def sync_repo
+    repo = Settings.repositories[params[:id].to_i]
+
+    files = `find #{repo} -name "*.mp3" -o -name "*.m4a" -o -name "*.ogg"`
+    files = files.split("\n")
+
+    files.each do |file|
+      file_name = file.split('/')[-1]
+
+      unless Audio.find_by_name(file_name)
+        Audio.create(name: file_name, path: file)
+      end
+    end
+
+    flash[:info] = 'Repository sync successful.'
+    redirect_to audios_path
+  end
+
   # GET /audios
   # GET /audios.json
   def index
