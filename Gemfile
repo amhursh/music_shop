@@ -32,7 +32,8 @@ gem 'jquery-rails'
 gem 'groupdate'
 gem 'chartkick'
 gem 'paperclip'
-gem 'aws-s3', :require => 'aws/s3'
+gem 'foundation-rails'
+gem 'foundation-icons-sass-rails'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
