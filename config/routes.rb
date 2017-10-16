@@ -21,7 +21,9 @@ Rails.application.routes.draw do
 
   resources :users, only: [:new, :create, :show, :update, :edit]
 
-  resources :categories, path: '/', only: [:show]
-
   resources :settings, except: [:show, :new, :edit]
+
+  resources :audios
+
+  resources :categories, path: '/', only: [:show]
 end
