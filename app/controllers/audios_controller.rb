@@ -20,6 +20,13 @@ class AudiosController < ApplicationController
     redirect_to audios_path
   end
 
+  def stream
+    audio = Audio.find(params[:id])
+    if audio
+      send_file audio.path
+    end
+  end
+
   # GET /audios
   # GET /audios.json
   def index
