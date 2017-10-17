@@ -1,7 +1,13 @@
 <p id="notice"><%= notice %></p>
-
-<div id="audio_div"></div>
-<%= react_component 'Audio', {id: @audio.id, action: controller_name, audio: @audio}, { prerender: true } %>
-
-<%= link_to 'Edit', edit_audio_path(@audio) %> |
-<%= link_to 'Back', audios_path %>
+<div class="row items-row">
+  <div class="col-md-4"></div>
+  <div class="col-md-4">
+    <div id="audio_div">
+      <%= react_component 'Audio', {id: @audio.id, action: controller_name, audio: @audio}, { prerender: true } %>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <%= link_to 'Edit', edit_audio_path(@audio) %> |
+    <%= link_to 'Back', audios_path %>
+  </div>
+</div>

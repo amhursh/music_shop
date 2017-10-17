@@ -8,7 +8,6 @@ class Admin::ItemsController < Admin::BaseController
   end
 
   def create
-    binding.pry
     @item = Item.new(item_params)
     if @item.save
       flash[:success] = "#{@item.title} has been created."
@@ -37,6 +36,6 @@ class Admin::ItemsController < Admin::BaseController
   private
 
   def item_params
-    params.require(:item).permit(:title, :description, :price, :category_id, :image, :status, :audio, :audio_file_name)
+    params.require(:item).permit(:title, :description, :price, :category_id, :image, :status, :audio)
   end
 end
