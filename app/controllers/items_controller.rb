@@ -8,24 +8,26 @@ class ItemsController < ApplicationController
     files.each do |file|
       file_name = file.split('/')[-1]
 
-      unless Item.find_by_name(file_name)
-        Item.create(name: file_name, path: file)
+      unless Item.find_by_title(file_name)
+        Item.create(title: file_name, path: file, description: 'nil', price: 10, category: Category.first)
+
       end
     end
 
     flash[:info] = 'Repository sync successful.'
-    redirect_to audios_path
+    redirect_to items_path
   end
 
   def stream
-    audio = Item.find(params[:id])
-    if audio
-      send_file audio.path
+    item = Item.find(params[:id])
+    if item
+      send_file item.audio.path
     end
   end
 
 	def index
 		@items = Item.all
+    @repositories = Settings.repositories ||= []
 	end
 
 	def show
