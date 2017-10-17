@@ -4,7 +4,7 @@
   <div class="col-md-4">
 
     <img class="item-show-image" src="<%= @item.image %>" alt="">
-    <%= react_component 'Audio', {id: @item.id, action: controller_name, audio: @audio}, { prerender: true } %>
+    <%= react_component 'Audio', {id: @item.id, action: controller_name, audio: @item.audio}, { prerender: true } %>
   </div>
 
   <div class="col-md-8">
