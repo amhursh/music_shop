@@ -21,7 +21,7 @@ class ItemsController < ApplicationController
   def stream
     item = Item.find(params[:id])
     if item
-      send_file item.audio.path
+      send_file item.path
     end
   end
 
