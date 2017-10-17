@@ -11,6 +11,9 @@ class Item < ApplicationRecord
   has_attached_file :image, styles: { small: "64x64", med: "100x100", large: "200x200" }, :default_url => "https://heuft.com/upload/image/400x267/no_image_placeholder.png"
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
 
+  has_attached_file :audio
+  validates_attachment_content_type :audio, :content_type => [ 'audio/mpeg', 'audio/x-mpeg', 'audio/mp3', 'audio/x-mp3', 'audio/mpeg3', 'audio/x-mpeg3', 'audio/mpg', 'audio/x-mpg', 'audio/x-mpegaudio' ]
+
   def formatted_price
     sprintf('%.2f', price)
   end
