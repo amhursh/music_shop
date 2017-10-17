@@ -96,6 +96,7 @@ class AudiosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def audio_params
-      params.fetch(:audio, {})
+      # params.fetch(:audio, {})
+      params.require(:audio).permit(:name, :path)
     end
 end
