@@ -3,7 +3,8 @@
   <div class="col-md-4"></div>
   <div class="col-md-4">
     <div id="audio_div">
-      <%= react_component 'Audio', {id: @audio.id, action: controller_name, audio: @audio}, { prerender: true } %>
+      <%= react_component 'Audio', {id: @audio.id, action: controller_name, audio: @audio }, { prerender: true } %>
+      <%= @audio.path %>
     </div>
   </div>
   <div class="col-md-4">

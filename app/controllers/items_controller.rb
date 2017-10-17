@@ -19,8 +19,18 @@ class ItemsController < ApplicationController
   end
 
   def stream
-    item = Item.find(params[:id])
+    # audio = Audio.find(params[:id])
+    # if audio
+    #   puts "=============================================="
+    #   puts audio.path
+    #   puts "=============================================="
+    #   send_file audio.path
+    # end
+    item = Audio.find(params[:id])
     if item
+      puts "=============================================="
+      puts item.path
+      puts "=============================================="
       send_file item.audio.path
     end
   end
@@ -33,6 +43,9 @@ class ItemsController < ApplicationController
 	def show
 		@item = Item.find(params[:id])
     @audio = @item.audio
+    puts "=========================="
+    puts @item
+    puts "=========================="
 	end
 
 end

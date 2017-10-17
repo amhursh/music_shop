@@ -9,7 +9,7 @@ class Admin::ItemsController < Admin::BaseController
 
   def create
     @item = Item.new(item_params)
-    if @item.save
+    if @item.save!
       flash[:success] = "#{@item.title} has been created."
       redirect_to item_path(@item)
     else
