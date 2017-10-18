@@ -1,0 +1,35 @@
+<br/><br/>
+
+<%= form_for(@audio) do |f| %>
+  <% if @audio.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@audio.errors.count, "error") %> prohibited this audio from being saved:</h2>
+
+      <ul>
+      <% @audio.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="row">
+    <div class="columns large-4">
+      <%= f.text_field :name %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="columns large-4">
+      <%= f.text_field :path %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="columns large-4">
+      <%= f.submit 'Save Audio File', class: 'button small success' %>
+    </div>
+  </div>
+<% end %>
+
+<br/><br/>

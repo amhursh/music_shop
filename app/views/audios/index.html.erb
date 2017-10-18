@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Audios</h1>
+<% @repositories.each_with_index do |repo, idx| %>
+  <h3>Repository:</h3>
+
+  <%= repo %>
+
+  <br/><hr><br/>
+
+  <% if @audios.blank? %>
+    No audio files created from this repository...
+    <br/><br/>
+  <% end %>
+  <%= link_to 'Sync Repository', sync_repo_path(idx), class: 'button small' %>
+
+  <br/><hr><br/>
+
+
+  <ul>
+    <% @audios.each do |audio| %>
+      <li>
+        <%= link_to audio.name, audio_path(audio) %>
+      </li>
+    <% end %>
+  </ul>
+
+<% end %>
