@@ -10,9 +10,14 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require rails-ujs
-//= require_tree .
 //= require jquery
+//= require rails-ujs
+//= require react
+//= require react_ujs
+//= require components
 //= require Chart.min
 //= require Chart.bundle
 //= require chartkick
+//= require bootstrap.min
+//= require_tree .
+// $(function(){ $(document).foundation(); });

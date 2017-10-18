@@ -14,13 +14,19 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get '/dashboard', to: 'admin#show'
-    resources :items, only: [:new, :create, :index, :edit, :update]
+    resources :items
   end
 
   get '/dashboard', to: 'users#show'
 
   resources :users, only: [:new, :create, :show, :update, :edit]
 
-  resources :categories, path: '/', only: [:show]
+  resources :settings, except: [:show, :new, :edit]
 
+  resources :audios
+
+  get '/sync_repo/:id', to: 'items#sync_repo', as: :sync_repo
+  get '/stream/:id', to: 'items#stream', as: :stream
+
+  resources :categories, path: '/', only: [:show]
 end
