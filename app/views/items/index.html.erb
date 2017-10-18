@@ -1,32 +1,22 @@
 <div class="category-show-title-div">
-	<h3 class="category-show-title center-text">Current Inventory</h3>
+  <h3 class="category-show-title center-text">Current Inventory</h3>
 </div>
 <div>
-<p id="notice"><%= notice %></p>
-
-<h1>Beats</h1>
-<% @repositories.each_with_index do |repo, idx| %>
-  <h3>Repository:</h3>
-
-  <%= repo %>
-
-  <br/><hr><br/>
-
-  <% if @items.blank? %>
-    No audio files created from this repository...
-    <br/><br/>
-  <% end %>
-  <%= link_to 'Sync Repository', sync_repo_path(idx), class: 'button small' %>
-
-  <br/><hr><br/>
-
-
-  <ul>
+  <div class="row items-row">
     <% @items.each do |item| %>
-      <li>
-        <%= link_to item.title, item_path(item) %>
-      </li>
+    <div class="col-md-3 item-card">
+      <div class="item_card index_item_<%= item.id %>">
+        <img class="item-card-img" src="<%= item.image %>" alt="">
+        <h3><%= link_to item.title, item_path(item) %></h3>
+        <% if item.active? %>
+        <%= link_to "Add to Cart", cart_path(item_id: item.id), method: :post, class: "cart-button btn btn-outline-info" %>
+        <% else %>
+        <button type="button" class="cart-button-retired btn btn-danger">Item Retired</button>
+        <% end %>
+        <br><br>
+        <div class="items-break-line"></div>
+      </div>
+    </div>
     <% end %>
-  </ul>
-
-<% end %>
+  </div>
+</div>
